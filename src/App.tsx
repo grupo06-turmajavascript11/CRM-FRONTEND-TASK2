@@ -1,14 +1,13 @@
-import './App.css'
-import 'react-toastify/dist/ReactToastify.css';
-import Home from './pages/Home';
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PerfilUsuario from "./pages/cliente/PerfilUsuario";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <Home />
-    </>
-  )
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/perfil" element={<PerfilUsuario />} />
+    </Routes>
+  );
 }
 
-export default App
