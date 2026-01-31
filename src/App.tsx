@@ -1,14 +1,16 @@
-import './App.css'
-import 'react-toastify/dist/ReactToastify.css';
-import Home from './pages/Home';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import PerfilAdmin from "./pages/admin/PerfilAdmin";
 
+
+
+export default function App() {
   return (
-    <>
-      <Home />
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/admin" element={<PerfilAdmin />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
