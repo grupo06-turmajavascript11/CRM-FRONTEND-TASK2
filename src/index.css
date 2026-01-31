@@ -1,1 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+/* --- CORES --- */
+
+/* Primary Brand (Violet) */
+--color-primary: #7C3AED;
+--color-primary-hover: #6D28D9;
+
+/* Dark Background/Text (Deep Slate) */
+--color-dark: #0F172A;
+
+/* Secondary Text (Slate Grey) */
+--color-secondary: #64748B;
+
+/* Muted/Borders (Light Grey) */
+--color-muted: #9CA3AF;
+
+/* Main Background (Very Light Slate/White) */
+--color-light: #F8FAFC;
+
+/* --- FONTES --- */
+--font-sans: "Inter", sans-serif;
+--font-heading: "Poppins", sans-serif;
+}
