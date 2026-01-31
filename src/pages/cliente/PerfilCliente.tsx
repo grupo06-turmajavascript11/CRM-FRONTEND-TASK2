@@ -274,7 +274,7 @@ export default function PerfilUsuario() {
               Informações pessoais
             </h2>
             <p className="text-secondary text-sm">
-              Atualize seus dados (alinhados com o backend de Usuário)
+              Atualize seus dados 
             </p>
           </div>
 

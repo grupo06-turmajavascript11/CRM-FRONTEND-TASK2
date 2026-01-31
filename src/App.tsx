@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import PerfilUsuario from "./pages/cliente/PerfilUsuario";
+import PerfilCliente from "./pages/cliente/PerfilCliente";
 export default function App() {
   return (
     <Routes>
-      <Route path="/cliente" element={<PerfilUsuario />} />
+      <Route path="/cliente" element={<PerfilCliente />} />
     </Routes>
   );
 }
