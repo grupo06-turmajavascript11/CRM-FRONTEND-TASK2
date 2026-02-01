@@ -52,38 +52,38 @@ export const teamMembers = [
 export const clients = [
   {
     id: 1,
-    company: 'Empresa Alpha',
+    company: 'NutriLeve',
     feedback: 'O CRM transformou nossa organização comercial e facilitou muito o acompanhamento dos clientes.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/mulher-preta.avif'
+    image: 'https://ik.imagekit.io/k8aunjtbla/mulher-preta.avif?updatedAt=1769458969963'
   },
   {
     id: 2,
-    company: 'Seguros Beta',
+    company: 'FitLife',
     feedback: 'Ganhamos produtividade e mais controle sobre propostas e contratos.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/homem%20asiatico.jpg'
+    image: 'https://ik.imagekit.io/k8aunjtbla/homem%20branco.jpg'
   },
   {
     id: 3,
-    company: 'Corretora Gamma',
+    company: 'Juntos na Estrada',
     feedback: 'Sistema intuitivo e totalmente alinhado à realidade do mercado de seguros.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20loira.jpg'
+    image: 'https://ik.imagekit.io/k8aunjtbla/homem%20asiatico.jpg?updatedAt=1769460230827'
   },
     {
     id: 4,
-    company: 'Corretora Gamma',
+    company: 'Segura Bank',
     feedback: 'Centralizamos todo o fluxo comercial em um único lugar, com mais visibilidade e menos retrabalho.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20loira.jpg'
+    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20ruiva.avif'
   },
     {
     id: 5,
-    company: 'Corretora Gamma',
+    company: 'Clariv Seguros',
     feedback: 'O Atlas 6 trouxe organização para o processo de vendas e agilidade na gestão de clientes.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20loira.jpg'
+    image: 'https://ik.imagekit.io/k8aunjtbla/homem%20negro.avif'
   },
     {
     id: 6,
-    company: 'Corretora Gamma',
+    company: 'Leve&Bem',
     feedback: 'Hoje acompanhamos propostas e contratos com muito mais clareza e eficiência.',
-    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20loira.jpg'
+    image: 'https://ik.imagekit.io/k8aunjtbla/mulher%20loira.jpg?updatedAt=1769460253067'
   }
 ];
