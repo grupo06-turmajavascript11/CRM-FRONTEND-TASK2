@@ -1,13 +1,15 @@
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import About from './pages/about/About'
 import 'react-toastify/dist/ReactToastify.css';
-import Home from './pages/Home';
 
 function App() {
-
   return (
-    <>
-      <Home />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<About />} />
+        <Route path="/sobre-nos" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
