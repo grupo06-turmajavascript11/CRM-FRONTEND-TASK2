@@ -5,6 +5,8 @@ import Cadastro from "./pages/Cadastro";
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home";
+import { Oportunidades } from './pages/Oportunidades';
+import { Solucoes } from './pages/Solucoes';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sobre-nos" element={<About />} />
+        <Route path="/solucoes" element={<Solucoes />} />
+        <Route path="/oportunidades" element={<Oportunidades />} />
       </Routes>
     </BrowserRouter>
     </>

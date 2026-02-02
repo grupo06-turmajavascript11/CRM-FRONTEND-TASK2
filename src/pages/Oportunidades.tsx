@@ -67,7 +67,7 @@ export function Oportunidades() {
               </div>
 
               {/* Área de Cards */}
-              <div className="bg-gray-100 rounded-xl p-3 h-full border border-muted/10 min-h-[400px]">
+              <div className="bg-gray-100 rounded-xl p-3 h-full border border-muted/10 min-h-100">
                 <div className="space-y-3">
                   {coluna.items.map((card) => (
                     <div 
