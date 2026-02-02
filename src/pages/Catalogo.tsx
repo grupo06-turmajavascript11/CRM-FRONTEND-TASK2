@@ -29,7 +29,7 @@ export default function Catalogo() {
   if (loading) {
     return (
       <div className="container mx-auto px-6 py-12">
-        <p className="text-center text-muted-foreground">Carregando catálogo...</p>
+        <p className="text-center text-gray-600 dark:text-gray-300">Carregando catálogo...</p>
       </div>
     );
   }
