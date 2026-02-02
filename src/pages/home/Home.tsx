@@ -9,7 +9,6 @@ import {
   ChartBarIcon,
   ShieldCheckIcon,
   ArrowRightIcon,
-  StarIcon,
   SparkleIcon,
   ChatCircleTextIcon,
   CheckCircleIcon,
@@ -23,26 +22,26 @@ import {
   ClipboardTextIcon,
 } from "@phosphor-icons/react";
 
-import { StarField } from "../components/ui/StarField";
-import { Button } from "../components/ui/button";
-import cosmicHero from "../assets/cosmic-hero.jpg";
-import featureBg from "../assets/webb-tarantula-neb.webp";
-import ctaVideo from "../assets/3194277-hd_1920_1080_30fps.mp4";
+import { StarField } from "../../components/ui/StarField";
+import { Button } from "../../components/ui/button";
+import cosmicHero from "../../assets/cosmic-hero.jpg";
+import featureBg from "../../assets/webb-tarantula-neb.webp";
+import ctaVideo from "../../assets/3194277-hd_1920_1080_30fps.mp4";
 
-import nutrileve from "@/assets/partners/nutrileve.png";
-import fitlife from "@/assets/partners/fitlife.png";
-import juntosnaestrada from "@/assets/partners/juntos-na-estrada.jpg";
-import segurabank from "@/assets/partners/segurabank.jpeg";
-import clarivseguros from "@/assets/partners/clarivseguros.jpeg";
-import leveebemLogo from "@/assets/partners/leveebemLogo.png";
+import nutrileve from "../../assets/partners/nutrileve.png";
+import fitlife from "../../assets/partners/fitlife.png";
+import juntosnaestrada from "../../assets/partners/juntos-na-estrada.jpg";
+import segurabank from "../../assets/partners/segurabank.png";
+import clarivseguros from "../../assets/partners/clarivseguros.png";
+import leveebemLogo from "../../assets/partners/leveebemLogo.png";
 
 const partners = [
-  { name: "NutriLeve", logo: nutrileve, scale: "scale-250" },
+  { name: "NutriLeve", logo: nutrileve, scale: "scale-270" },
   { name: "FitLife", logo: fitlife, scale: "scale-[1.5]" },
-  { name: "Juntos na Estrada", logo: juntosnaestrada, scale: "scale-100" },
-  { name: "SeguraBank", logo: segurabank, scale: "scale-100" },
-  { name: "Clary Seguros", logo: clarivseguros, scale: "scale-100" },
-  { name: "Leve & Bem", logo: leveebemLogo, scale: "scale-60" },
+  { name: "Juntos na Estrada", logo: juntosnaestrada, scale: "scale-120" },
+  { name: "SeguraBank", logo: segurabank, scale: "scale-120" },
+  { name: "Clariv Seguros", logo: clarivseguros, scale: "scale-120" },
+  { name: "Leve & Bem", logo: leveebemLogo, scale: "scale-70" },
 ];
 
 
@@ -496,8 +495,8 @@ function AtlasAIComingSoon() {
               </div>
 
               <div>
-                <span className="inline-flex mb-3 text-xs font-semibold px-3 py-1 rounded-full bg-dark/30 text-light border border-white/10">
-                  Em breve
+                <span className="inline-flex mb-5 text-sm font-semibold px-3 py-1 rounded-full bg-dark/30 text-light border border-white/20">
+                Em breve
                 </span>
 
                 <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-light leading-tight">
@@ -544,12 +543,12 @@ export default function Home() {
           <img
             src={cosmicHero}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover brightness-125 contrast-125 saturate-125 bg-dark"
+            className="absolute inset-0 w-full h-full object-cover brightness-200 contrast-125 saturate-125 bg-dark"
           />
-          <div className="hidden sm:block absolute inset-0">
+          <div className="w-full h-full object-cover">
             <StarField />
           </div>
-          <div className="absolute inset-0 bg-dark/70" />
+          <div className="absolute inset-0 bg-dark/88" />
         </div>
 
         <div className="absolute top-1/4 right-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-primary/20 rounded-full blur-[120px] z-0" />
@@ -562,20 +561,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto text-center"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-7 sm:mb-8"
-            >
-              <motion.span {...floatingIcon(0.1)}>
-                <StarIcon size={16} weight="fill" className="text-light" />
-              </motion.span>
-
-              <span className="text-sm font-medium text-primary">
-                O futuro do CRM chegou
-              </span>
-            </motion.div>
+         
 
             <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-5 sm:mb-6 leading-tight text-light">
               Alcance resultados meteóricos{" "}
@@ -584,10 +570,11 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-secondary mb-8 sm:mb-10 max-w-2xl lg:max-w-3xl mx-auto px-2 sm:px-0">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-light mb-8 sm:mb-10 max-w-2xl lg:max-w-3xl mx-auto px-2 sm:px-0">
               Atlas6 é a plataforma de CRM que transforma a maneira como você
-              gerencia clientes, oportunidades e resultados. Prepare-se para
-              decolar.
+              gerencia clientes, oportunidades e resultados. 
+              <br />
+              Prepare-se para decolar.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
@@ -637,7 +624,7 @@ export default function Home() {
       <section className="py-12 sm:py-16 lg:py-20 border-y border-muted/20 bg-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           <p className="text-center text-secondary mb-8 sm:mb-12 font-medium text-base sm:text-lg lg:text-xl px-2 sm:px-0">
-            Algumas “empresas da Fortune Global 500” que já são nossas clientes…
+            Entre nossos clientes estão empresas da Fortune Global 500.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-10 lg:gap-12 place-items-center">
