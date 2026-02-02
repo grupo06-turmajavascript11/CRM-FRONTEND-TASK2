@@ -22,18 +22,18 @@ import {
   ClipboardTextIcon,
 } from "@phosphor-icons/react";
 
-import { StarField } from "../../components/ui/StarField";
-import { Button } from "../../components/ui/button";
-import cosmicHero from "../../assets/cosmic-hero.jpg";
-import featureBg from "../../assets/webb-tarantula-neb.webp";
-import ctaVideo from "../../assets/3194277-hd_1920_1080_30fps.mp4";
+import { StarField } from "../components/ui/StarField";
+import { Button } from "../components/ui/Button";
+import cosmicHero from "../assets/cosmic-hero.jpg";
+import featureBg from "../assets/webb-tarantula-neb.webp";
+import ctaVideo from "../assets/3194277-hd_1920_1080_30fps.mp4";
 
-import nutrileve from "../../assets/partners/nutrileve.png";
-import fitlife from "../../assets/partners/fitlife.png";
-import juntosnaestrada from "../../assets/partners/juntos-na-estrada.jpg";
-import segurabank from "../../assets/partners/segurabank.png";
-import clarivseguros from "../../assets/partners/clarivseguros.png";
-import leveebemLogo from "../../assets/partners/leveebemLogo.png";
+import nutrileve from "../assets/partners/nutrileve.png";
+import fitlife from "../assets/partners/fitlife.png";
+import juntosnaestrada from "../assets/partners/juntos-na-estrada.jpg";
+import segurabank from "../assets/partners/segurabank.png";
+import clarivseguros from "../assets/partners/clarivseguros.png";
+import leveebemLogo from "../assets/partners/leveebemLogo.png";
 
 const partners = [
   { name: "NutriLeve", logo: nutrileve, scale: "scale-270" },
