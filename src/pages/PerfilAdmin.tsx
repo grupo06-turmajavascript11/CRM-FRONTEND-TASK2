@@ -14,7 +14,7 @@ import {
   ArrowLeftIcon,
   SignOutIcon,
 } from "@phosphor-icons/react";
-import cosmicHero from "../../assets/cosmic-hero.jpg";
+import cosmicHero from "../assets/cosmic-hero.jpg";
 
 type TipoUsuario = "ADMIN" | "CLIENTE";
 
@@ -29,7 +29,7 @@ type UsuarioForm = {
   tipo?: TipoUsuario;
 };
 
-export default function PerfilUsuario() {
+export default function PerfilAdmin() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);

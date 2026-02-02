@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/Home";
 import { Oportunidades } from './pages/Oportunidades';
 import { Solucoes } from './pages/Solucoes';
+import PerfilAdmin from './pages/PerfilAdmin';
+import PerfilCliente from './pages/PerfilCliente';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/sobre-nos" element={<About />} />
         <Route path="/solucoes" element={<Solucoes />} />
         <Route path="/oportunidades" element={<Oportunidades />} />
+        <Route path="/perfil/admin" element={<PerfilAdmin />} />
+        <Route path="/perfil/cliente" element={<PerfilCliente />} />
       </Routes>
     </BrowserRouter>
     </>
