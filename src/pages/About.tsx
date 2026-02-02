@@ -1,14 +1,14 @@
-import { teamMembers, clients } from "../../data/Team";
+import { teamMembers, clients } from "../data/Team";
 import {
   Target,
   Eye,
   Diamond,
   LinkedinLogo,
   GithubLogo,
-} from "phosphor-react";
+} from "@phosphor-icons/react";
 import { useState} from "react";
 
-export default function SobreNos() {
+export default function About() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
 const prev = () => {
