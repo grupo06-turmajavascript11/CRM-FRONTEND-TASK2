@@ -8,7 +8,7 @@ import {
 } from "@phosphor-icons/react";
 import { useState} from "react";
 
-export default function About() {
+export default function Sobre() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
 const prev = () => {
