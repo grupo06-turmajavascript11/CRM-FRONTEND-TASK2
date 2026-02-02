@@ -26,14 +26,26 @@ export function ProdutoModal({
 
         <div className="grid grid-cols-1 gap-4">
           <input
-            className="border rounded-lg p-3"
+            className="
+                w-full p-3 rounded-lg
+                bg-[#F8FAFC] dark:bg-[#0F172A]
+                text-[#0F172A] dark:text-[#F8FAFC]
+                border border-[#9CA3AF] dark:border-[#64748B]
+                placeholder:text-[#64748B] dark:placeholder:text-[#9CA3AF]
+              "
             placeholder="Titulo"
             value={produto.produto}
             onChange={(e) => onChange({ ...produto, produto: e.target.value })}
           />
 
           <input
-            className="border rounded-lg p-3"
+            className="
+                w-full p-3 rounded-lg
+                bg-[#F8FAFC] dark:bg-[#0F172A]
+                text-[#0F172A] dark:text-[#F8FAFC]
+                border border-[#9CA3AF] dark:border-[#64748B]
+                placeholder:text-[#64748B] dark:placeholder:text-[#9CA3AF]
+              "
             placeholder="Valor"
             type="number"
             value={produto.valor}
@@ -43,9 +55,15 @@ export function ProdutoModal({
           />
 
           <input
-            className="border rounded-lg p-3"
+            className="
+                w-full p-3 rounded-lg
+                bg-[#F8FAFC] dark:bg-[#0F172A]
+                text-[#0F172A] dark:text-[#F8FAFC]
+                border border-[#9CA3AF] dark:border-[#64748B]
+                placeholder:text-[#64748B] dark:placeholder:text-[#9CA3AF]
+              "
             placeholder="Categoria"
-            type="string"
+            type="text"
             value={produto.categoria}
             onChange={(e) =>
               onChange({ ...produto, categoria: String(e.target.value) })
@@ -53,7 +71,13 @@ export function ProdutoModal({
           />
 
           <input
-            className="border rounded-lg p-3"
+            className="
+                w-full p-3 rounded-lg
+                bg-[#F8FAFC] dark:bg-[#0F172A]
+                text-[#0F172A] dark:text-[#F8FAFC]
+                border border-[#9CA3AF] dark:border-[#64748B]
+                placeholder:text-[#64748B] dark:placeholder:text-[#9CA3AF]
+              "
             placeholder="Descrição"
             value={produto.descricao}
             onChange={(e) =>
