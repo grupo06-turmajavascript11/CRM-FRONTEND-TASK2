@@ -24,8 +24,8 @@ import {
 } from "@phosphor-icons/react";
 
 import { StarField } from "../components/ui/StarField";
-import Button from "../components/ui/Button";
-import { AuthContext } from "../contexts/AuthContext"; 
+
+import { AuthContext } from "../contexts/AuthContext";
 import cosmicHero from "../assets/cosmic-hero.jpg";
 import featureBg from "../assets/webb-tarantula-neb.webp";
 import ctaVideo from "../assets/3194277-hd_1920_1080_30fps.mp4";
@@ -35,6 +35,7 @@ import juntosnaestrada from "../assets/partners/juntos-na-estrada.jpg";
 import segurabank from "../assets/partners/segurabank.png";
 import clarivseguros from "../assets/partners/clarivseguros.png";
 import leveebemLogo from "../assets/partners/leveebemLogo.png";
+import Button from "../components/ui/Button";
 
 const partners = [
   { name: "NutriLeve", logo: nutrileve, scale: "scale-270" },
@@ -52,12 +53,12 @@ const features = [
     description:
       "Automatize processos e veja seus resultados decolarem em tempo recorde.",
   },
-{
-  icon: ChatCircleTextIcon,
-  title: "Relacionamento em Órbita",
-  description:
-    "Acompanhe cada conversa e histórico do cliente em um só lugar — responda mais rápido, com contexto e consistência.",
-},
+  {
+    icon: ChatCircleTextIcon,
+    title: "Relacionamento em Órbita",
+    description:
+      "Acompanhe cada conversa e histórico do cliente em um só lugar — responda mais rápido, com contexto e consistência.",
+  },
   {
     icon: GlobeHemisphereWestIcon,
     title: "Expansão Universal",
@@ -459,16 +460,17 @@ function VideoCTA() {
 
           <Button
             asChild
-            className="h-12 px-8 rounded-xl bg-primary text-white hover:bg-primary-hover transition"
+            variant="cosmic" // REESCRITO: Usando variante cosmic
+            size="xl"      
+            className="shadow-2xl shadow-primary/50"
           >
-            {/* Atualizado para linkar ao Cadastro */}
-            <Link to="/cadastro" className="inline-flex items-center">
+            <Link to="/cadastro" className="inline-flex items-center gap-2">
               <motion.span
-                className="mr-2 inline-flex"
+                className="inline-flex"
                 animate={{ y: [0, -2, 0] }}
                 transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" as const }}
               >
-                <RocketLaunchIcon size={20} weight="duotone" />
+                <RocketLaunchIcon size={24} weight="duotone" />
               </motion.span>
               Começar Gratuitamente
             </Link>
@@ -589,7 +591,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto text-center"
           >
-         
+           
             <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-5 sm:mb-6 leading-tight text-light">
               Alcance resultados meteóricos{" "}
               <span className="bg-linear-to-br from-primary to-primary-hover bg-clip-text text-transparent">
@@ -604,20 +606,21 @@ export default function Home() {
               Prepare-se para decolar.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+            {/* REESCRITO: Bloco de Botões com Variantes do Button.tsx */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   asChild
-                  className="h-12 px-8 rounded-xl bg-primary text-white hover:bg-primary-hover transition shadow-sm w-full sm:w-auto"
+                  variant="cosmic" // Usando variante cosmic
+                  size="xl"       // Usando tamanho XL
+                  className="w-full sm:w-auto shadow-xl shadow-primary/20"
                 >
-                  {/* Link atualizado para /cadastro */}
-                  <Link to="/cadastro" className="inline-flex items-center justify-center w-full">
+                  <Link to="/cadastro" className="flex items-center gap-2">
                     <motion.span
-                      className="mr-2 inline-flex"
-                      whileHover={{ rotate: -8, y: -2 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 18 }}
+                      animate={{ y: [0, -2, 0] }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10, repeat: Infinity, repeatDelay: 3 }}
                     >
-                      <RocketLaunchIcon size={20} weight="duotone" />
+                      <RocketLaunchIcon size={24} weight="duotone" />
                     </motion.span>
                     Decolar Agora
                   </Link>
@@ -626,18 +629,16 @@ export default function Home() {
 
               <Button
                 asChild
-                className="h-12 px-8 rounded-xl border border-muted/40 text-light hover:bg-white/10 transition bg-transparent w-full sm:w-auto"
+                variant="outline"
+                size="xl"
+                // Estilo custom "Glass" para o botão secundário
+                className="w-full sm:w-auto border-white/10 bg-white/5 text-white hover:bg-white/10 hover:text-white hover:border-white/20 backdrop-blur-sm transition-all"
               >
-                <Link to="/solucoes" className="inline-flex items-center justify-center w-full">
+                <Link to="/solucoes" className="flex items-center gap-2">
                   Explorar Soluções
                   <motion.span
-                    className="ml-2 inline-flex"
                     animate={{ x: [0, 4, 0] }}
-                    transition={{
-                      duration: 1.4,
-                      repeat: Infinity,
-                      ease: "easeInOut" as const,
-                    }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                   >
                     <ArrowRightIcon size={20} weight="bold" />
                   </motion.span>
@@ -648,7 +649,7 @@ export default function Home() {
         </div>
       </section>
 
-{/* PARTNERS */}
+      {/* PARTNERS */}
       <section className="py-12 sm:py-16 lg:py-20 border-y border-muted/20 bg-light/70">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
           <p className="text-center text-dark mb-8 sm:mb-12 font-bold text-base sm:text-lg lg:text-xl px-2 sm:px-0">
