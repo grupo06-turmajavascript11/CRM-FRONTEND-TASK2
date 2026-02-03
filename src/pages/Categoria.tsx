@@ -17,9 +17,6 @@ interface Categoria {
   nome: string; // Único campo persistido além do ID
 }
 
-// ============================================================================
-// COMPONENTE: Lista de Categorias (Simplificada)
-// ============================================================================
 interface ListaProps {
   categorias: Categoria[];
   onEditar: (categoria: Categoria) => void;
@@ -104,9 +101,6 @@ function ListaCategorias({ categorias, onEditar, onExcluir }: ListaProps) {
   );
 }
 
-// ============================================================================
-// COMPONENTE: Formulário de Categoria (Simplificado)
-// ============================================================================
 interface FormProps {
   categoria?: Categoria | null;
   onSalvar: (dados: { nome: string }) => void;

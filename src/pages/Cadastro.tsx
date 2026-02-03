@@ -119,7 +119,7 @@ export default function Cadastro() {
 
         {/* BOTÃO VOLTAR PARA HOME */}
         <Link 
-          to="/" 
+          to="/home" 
           className="absolute top-6 left-6 text-secondary hover:text-primary transition-colors flex items-center gap-2 text-sm font-bold group"
           title="Voltar para a página inicial"
         >

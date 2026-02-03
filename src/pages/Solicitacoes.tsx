@@ -78,7 +78,7 @@ export default function MinhasSolicitacoes() {
                   Explore nosso catálogo e encontre o seguro ideal para você.
                 </p>
                 <Link 
-                  to="/catalogo"
+                  to="/cliente/catalogo"
                   className="text-violet-600 hover:text-violet-500 font-bold underline"
                 >
                   Ir para o Catálogo

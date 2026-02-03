@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { MoonIcon, SunIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
+import { SignOutIcon, UserIcon } from "@phosphor-icons/react";
 import { AuthContext } from "@/contexts/AuthContext";
 import Logo from "@/assets/logo.svg";
 
@@ -12,36 +12,10 @@ function Navbar() {
   const { usuario, handleLogout } = useContext(AuthContext);
   const isLoggedIn = usuario.token !== "";
 
-  const [darkMode, setDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme) {
-        return savedTheme === "dark";
-      }
-      return systemPrefersDark;
-    }
-    return false;
-  });
 
   const destinoLogo = isLoggedIn 
     ? (usuario.tipo === "ADMIN" ? "/admin/oportunidades" : "/cliente/solicitacoes") 
     : "/";
-
-  useEffect(() => {
-    const html = document.documentElement;
-    if (darkMode) {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
-  const toggleTheme = () => {
-    setDarkMode(prev => !prev);
-  };
 
   function logout() {
     handleLogout();
