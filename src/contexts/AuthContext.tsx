@@ -1,11 +1,11 @@
 import { createContext, type ReactNode, useState } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
-import { ToastAlerta } from "../utils/ToastAlerta";
+import { login } from "../services/Service";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;
-  handleLogout(): void;
-  handleLogin(usuario: UsuarioLogin): Promise<void>;
+  handleLogout: () => void;
+  handleLogin: (usuario: UsuarioLogin) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -16,58 +16,66 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-
+  
   const [usuario, setUsuario] = useState<UsuarioLogin>({
     id: 0,
     nome: "",
-    usuario: "",
+    email: "",
     senha: "",
     foto: "",
-    token: ""
+    token: "",
+    tipo: ""
   });
 
   const [isLoading, setIsLoading] = useState(false);
 
-  {/* LOGIN */}
-  async function handleLogin(usuarioLogin: UsuarioLogin) {
+  async function handleLogin(userLogin: UsuarioLogin) {
     setIsLoading(true);
-
     try {
-      await login(`/usuarios/logar`, usuarioLogin, setUsuario);
+      await login(`/usuarios/login`, userLogin, (dadosResposta: any) => {
 
-      ToastAlerta("Usuário autenticado com sucesso!", "sucesso");
+        const tokenRecebido = dadosResposta.access_token || dadosResposta.token;
+
+        if (!tokenRecebido) {
+            throw new Error("Token não encontrado na resposta!");
+        }
+        const tokenFormatado = tokenRecebido.startsWith("Bearer") 
+            ? tokenRecebido 
+            : `Bearer ${tokenRecebido}`;
+
+        const usuarioLogado = {
+            id: dadosResposta.id,
+            nome: dadosResposta.nome || "",
+            email: userLogin.email,
+            foto: dadosResposta.foto || "",
+            tipo: dadosResposta.tipo,
+            token: tokenFormatado,
+            senha: userLogin.senha
+        };
+
+        setUsuario(usuarioLogado);
+      });
+
+      alert("Usuário logado com sucesso!");
+      
     } catch (error) {
-      ToastAlerta("Os dados do usuário estão inconsistentes!", "erro");
+      console.error(error);
+      alert("Dados do usuário inconsistentes. Verifique as informações de cadastro.");
     }
-
     setIsLoading(false);
   }
 
-   {/* CADASTRO */}
-  async function handleCadastro(novoUsuario: UsuarioLogin) {
-    setIsLoading(true);
-    try {
-      await cadastrarUsuario(`/usuarios/cadastrar`, novoUsuario);
-      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso");
-      // opcional: já logar automaticamente ou redirecionar
-    } catch (error) {
-      ToastAlerta("Erro ao cadastrar o usuário!", "erro");
-    }
-    setIsLoading(false);
-  }
-
-  {/* LOGOUT */}
   function handleLogout() {
     setUsuario({
       id: 0,
       nome: "",
-      usuario: "",
+      email: "",
       senha: "",
       foto: "",
-      token: ""
+      token: "",
+      tipo: ""
     });
-
-    ToastAlerta("Usuário deslogado com sucesso!", "sucesso");
+    alert("Usuário deslogado com sucesso!");
   }
 
   return (

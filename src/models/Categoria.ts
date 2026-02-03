@@ -1,8 +1,7 @@
-// models/Categoria.ts
-export interface Categoria {
+import type Produto from './Produto';
+
+export default interface Categoria {
   id: number;
-  nome: string;
-  descricao?: string;
-  cor: string;
-  destaque?: boolean;
+  nome: string; 
+  produto?: Produto[] | null;
 }

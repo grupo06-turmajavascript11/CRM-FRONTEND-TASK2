@@ -1,49 +1,63 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+// Contextos e Utils
+import { AuthProvider } from './contexts/AuthContext';
+import ScrollToTop from './components/ui/ScrollTop';
+import Layout from './components/layout/Layout'; // Importe o Layout criado acima
+
+// Páginas
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
-import { ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
-import Home from "./pages/Home";
+import Sobre from './pages/Sobre';
 import { Oportunidades } from './pages/Oportunidades';
 import { Solucoes } from './pages/Solucoes';
+import Solicitacoes from './pages/Solicitacoes';
 import PerfilAdmin from './pages/PerfilAdmin';
 import PerfilCliente from './pages/PerfilCliente';
-import Solicitacoes from './pages/Solicitacoes';
+
+// Paginas Comentadas (mantidas conforme pedido)
 import Catalogo from './pages/Catalogo';
-import Sobre from './pages/Sobre';
-import Navbar from './components/navbar/Navbar';
-import Footer from './components/footer/Footer';
-import Categorias from './pages/Categoria';
+// import Categorias from './pages/Categoria';
 
 function App() {
   return (
-    <>
-    <Navbar />
-    <ToastContainer />
-    <BrowserRouter>
-    <div className="
-      pt-20 min-h-screen
-      bg-gray-50 dark:bg-gray-900
-      text-gray-900 dark:text-gray-100
-      transition-colors duration-300
-    ">
-      <Routes>
-        <Route path="/" element={<Home />} /> 
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sobre-nos" element={<Sobre />} />
-        <Route path="/solucoes" element={<Solucoes />} />
-        <Route path="/oportunidades" element={<Oportunidades />} />
-        <Route path="/perfil/admin" element={<PerfilAdmin />} />
-        <Route path="/perfil/cliente" element={<PerfilCliente />} />
-        <Route path="/solicitacoes" element={<Solicitacoes />} />
-        <Route path="/catalogo" element={<Catalogo />} />
-        <Route path="/categorias" element={<Categorias />} />
-      </Routes>
-    </div>
-    <Footer />
-    </BrowserRouter>
-        <ToastContainer
+    <AuthProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        
+        <Routes>
+          {/* O Layout envolve todas as rotas */}
+          <Route path="/" element={<Layout />}>
+            
+            {/* Rotas Públicas */}
+            <Route index element={<Home />} /> {/* Rota raiz "/" */}
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/solucoes" element={<Solucoes />} />
+
+            {/* Rotas Protegidas / Funcionais */}
+            <Route path="/oportunidades" element={<Oportunidades />} />
+            <Route path="/solicitacoes" element={<Solicitacoes />} />
+            
+            {/* Perfis */}
+            <Route path="/admin/perfil" element={<PerfilAdmin />} />
+            <Route path="/cliente/perfil" element={<PerfilCliente />} />
+
+            {/* Rotas Futuras */}
+            <Route path="/catalogo" element={<Catalogo />} />
+            {/* <Route path="/categorias" element={<Categorias />} /> */}
+            
+          </Route>
+        </Routes>
+
+      </BrowserRouter>
+
+      <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -53,7 +67,7 @@ function App() {
         draggable
         theme="dark"
       />
-    </>
+    </AuthProvider>
   );
 }
 

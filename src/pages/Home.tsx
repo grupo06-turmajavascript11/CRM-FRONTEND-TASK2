@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   RocketLaunchIcon,
   LightningIcon,
@@ -20,14 +20,15 @@ import {
   UserCircleGearIcon,
   KeyholeIcon,
   ClipboardTextIcon,
+  CircleNotchIcon,
 } from "@phosphor-icons/react";
 
 import { StarField } from "../components/ui/StarField";
 import { Button } from "../components/ui/Button";
+import { AuthContext } from "../contexts/AuthContext"; 
 import cosmicHero from "../assets/cosmic-hero.jpg";
 import featureBg from "../assets/webb-tarantula-neb.webp";
 import ctaVideo from "../assets/3194277-hd_1920_1080_30fps.mp4";
-
 import nutrileve from "../assets/partners/nutrileve.png";
 import fitlife from "../assets/partners/fitlife.png";
 import juntosnaestrada from "../assets/partners/juntos-na-estrada.jpg";
@@ -43,7 +44,6 @@ const partners = [
   { name: "Clariv Seguros", logo: clarivseguros, scale: "scale-120" },
   { name: "Leve & Bem", logo: leveebemLogo, scale: "scale-70" },
 ];
-
 
 const features = [
   {
@@ -455,7 +455,8 @@ function VideoCTA() {
             asChild
             className="h-12 px-8 rounded-xl bg-primary text-white hover:bg-primary-hover transition"
           >
-            <Link to="/registro" className="inline-flex items-center">
+            {/* Atualizado para linkar ao Cadastro */}
+            <Link to="/cadastro" className="inline-flex items-center">
               <motion.span
                 className="mr-2 inline-flex"
                 animate={{ y: [0, -2, 0] }}
@@ -472,7 +473,6 @@ function VideoCTA() {
   );
 }
 
-/* IA (EM BREVE) */
 function AtlasAIComingSoon() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
@@ -534,7 +534,29 @@ function AtlasAIComingSoon() {
   );
 }
 
+
 export default function Home() {
+  const navigate = useNavigate();
+  const { usuario } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (usuario.token !== "") {
+      if (usuario.tipo === "ADMIN") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/solicitacoes");
+      }
+    }
+  }, [usuario, navigate]);
+
+  if (usuario.token !== "") {
+    return (
+      <div className="min-h-screen bg-dark flex items-center justify-center">
+         <CircleNotchIcon size={48} className="animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
     <div className="relative bg-dark text-muted">
       {/* HERO */}
@@ -562,7 +584,6 @@ export default function Home() {
             className="max-w-4xl lg:max-w-5xl 2xl:max-w-6xl mx-auto text-center"
           >
          
-
             <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-5 sm:mb-6 leading-tight text-light">
               Alcance resultados meteóricos{" "}
               <span className="bg-linear-to-br from-primary to-primary-hover bg-clip-text text-transparent">
@@ -583,7 +604,8 @@ export default function Home() {
                   asChild
                   className="h-12 px-8 rounded-xl bg-primary text-white hover:bg-primary-hover transition shadow-sm w-full sm:w-auto"
                 >
-                  <Link to="/registro" className="inline-flex items-center justify-center w-full">
+                  {/* Link atualizado para /cadastro */}
+                  <Link to="/cadastro" className="inline-flex items-center justify-center w-full">
                     <motion.span
                       className="mr-2 inline-flex"
                       whileHover={{ rotate: -8, y: -2 }}
