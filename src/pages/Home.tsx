@@ -24,7 +24,7 @@ import {
 } from "@phosphor-icons/react";
 
 import { StarField } from "../components/ui/StarField";
-import {Button} from "../components/ui/Button";
+import Button from "../components/ui/Button";
 import { AuthContext } from "../contexts/AuthContext"; 
 import cosmicHero from "../assets/cosmic-hero.jpg";
 import featureBg from "../assets/webb-tarantula-neb.webp";
