@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import {
-  ChartBarIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
   InstagramLogoIcon,
   EnvelopeIcon,
 } from "@phosphor-icons/react";
+
+import Logo from "@/assets/logo.svg";
 
 function Footer() {
   return (
@@ -24,7 +25,7 @@ function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-violet-600 rounded-lg flex items-center justify-center">
-                <ChartBarIcon size={24} weight="bold" className="text-white" />
+                <img src={Logo} alt="Logo" className="p-1" />
               </div>
               <span className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                 CRM Atlas 6

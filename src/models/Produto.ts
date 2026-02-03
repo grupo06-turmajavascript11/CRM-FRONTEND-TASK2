@@ -8,7 +8,6 @@ export default interface Produto {
   preco: number;
   carencia?: number | null;
   status: string;
-  dataAtualizacao?: string;
   categoria: Categoria;
   usuario?: Usuario | null;
 }

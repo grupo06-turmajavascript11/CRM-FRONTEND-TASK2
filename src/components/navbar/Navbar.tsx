@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ChartBarIcon, MoonIcon, SunIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
+import { MoonIcon, SunIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
 import { AuthContext } from "@/contexts/AuthContext";
+import Logo from "@/assets/logo.svg";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function Navbar() {
   });
 
   const destinoLogo = isLoggedIn 
-    ? (usuario.tipo === "ADMIN" ? "/admin/dashboard" : "/solicitacoes") 
+    ? (usuario.tipo === "ADMIN" ? "/admin/oportunidades" : "/cliente/solicitacoes") 
     : "/";
 
   useEffect(() => {
@@ -55,16 +56,15 @@ function Navbar() {
     navLinks = [
       { label: "Home", path: "/" },
       { label: "Sobre Nós", path: "/sobre" },
-      { label: "Soluções", path: "/solucoes" },
     ];
   } else if (usuario.tipo === "CLIENTE") {
     navLinks = [
-      { label: "Catálogo", path: "/catalogo" },
-      { label: "Minhas Solicitações", path: "/solicitacoes" },
+      { label: "Catálogo", path: "/cliente/catalogo" },
+      { label: "Minhas Solicitações", path: "/cliente/solicitacoes" },
     ];
   } else if (usuario.tipo === "ADMIN") {
     navLinks = [
-      { label: "Oportunidades", path: "/admin/dashboard" },
+      { label: "Oportunidades", path: "/admin/oportunidades" },
       { label: "Produtos", path: "/admin/produtos" },
       { label: "Categorias", path: "/admin/categorias" },
     ];
@@ -83,7 +83,7 @@ function Navbar() {
           
           <Link to={destinoLogo} className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-violet-600 rounded-lg flex items-center justify-center group-hover:bg-violet-700 transition-colors">
-              <ChartBarIcon size={24} weight="bold" color="white" />
+              <img src={Logo} alt="Logo" className="p-1" />
             </div>
             <span className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-violet-600 transition-colors">
               CRM Atlas 6
@@ -152,7 +152,7 @@ function Navbar() {
               </Link>
             )}
 
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="ml-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
               aria-label="Alternar tema"
@@ -162,7 +162,7 @@ function Navbar() {
               ) : (
                 <MoonIcon size={20} className="text-slate-700" />
               )}
-            </button>
+            </button> */}
 
           </div>
         </div>

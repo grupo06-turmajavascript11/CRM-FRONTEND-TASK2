@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "@/contexts/AuthContext";
 import type UsuarioLogin from "@/models/UsuarioLogin";
 import { ArrowLeftIcon } from "@phosphor-icons/react";
+import LogoColor from "@/assets/logo_color.svg"
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,9 +18,9 @@ export default function Login() {
   useEffect(() => {
     if (usuario.token !== "") {
       if (usuario.tipo === "ADMIN") {
-        navigate("/admin/dashboard");
+        navigate("/admin/oportunidades");
       } else {
-        navigate("/solicitacoes");
+        navigate("/cliente/solicitacoes");
       }
     }
   }, [usuario, navigate]);
@@ -69,7 +70,7 @@ export default function Login() {
 
         <div className="flex justify-center mb-6 mt-2">
           <img
-            src="/logo-atlas6.svg"
+            src={LogoColor}
             alt="Atlas 6 CRM"
             className="h-16"
           />

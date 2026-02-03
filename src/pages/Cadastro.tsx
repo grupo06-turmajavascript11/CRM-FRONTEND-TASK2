@@ -2,7 +2,8 @@ import { useState, type ChangeEvent, type FormEvent, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import type Usuario from "@/models/Usuario";
 import { cadastrarUsuario } from "@/services/Service";
-import { ArrowLeftIcon } from "@phosphor-icons/react"; // Importando com o sufixo Icon
+import { ArrowLeftIcon } from "@phosphor-icons/react";
+import LogoColor from "@/assets/logo_color.svg"
 
 interface UsuarioCadastro {
   nome: string;
@@ -127,7 +128,7 @@ export default function Cadastro() {
         </Link>
 
         <div className="flex justify-center mb-6 mt-4">
-          <img src="/logo-atlas6.svg" alt="Atlas 6 CRM" className="h-16" />
+          <img src={LogoColor} alt="Atlas 6 CRM" className="h-16" />
         </div>
 
         <h2 className="text-center text-3xl text-primary font-heading mb-6">
