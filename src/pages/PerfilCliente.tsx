@@ -177,7 +177,7 @@ export default function PerfilCliente() {
         <div className="flex items-center justify-between gap-3 mb-7">
           <div><h1 className="font-heading text-3xl font-bold text-white">Meu Perfil</h1></div>
           <div className="flex items-center gap-2">
-            <Link to="/cliente/solicitacoes" className="h-11 px-4 rounded-xl border border-muted/30 bg-white hover:bg-dark/5 transition inline-flex items-center gap-2 text-sm font-medium">
+            <Link to="/cliente/solicitacoes" className="h-11 px-4 rounded-xl border border-muted/30 bg-primary hover:bg-primary-hover transition inline-flex items-center gap-2 text-sm font-medium">
               <ArrowLeftIcon size={18} weight="bold" /> Voltar
             </Link>
             <button onClick={logout} className="h-11 px-4 rounded-xl bg-primary text-white hover:bg-primary-hover transition inline-flex items-center gap-2 text-sm font-medium">

@@ -4,23 +4,21 @@ import {
   ArrowsClockwiseIcon, 
   PencilSimpleIcon, 
   TrashIcon, 
-  XIcon 
+  XIcon,
+  TagIcon 
 } from "@phosphor-icons/react";
 
 import { AuthContext } from "@/contexts/AuthContext";
 import api from "@/services/Service";
 
-// 1. Definição da Model (baseada nos campos do seu formulário)
+// 1. Definição da Model (Simplificada)
 interface Categoria {
   id: number;
-  nome: string;
-  descricao: string;
-  cor: string;
-  destaque: boolean;
+  nome: string; // Único campo persistido além do ID
 }
 
 // ============================================================================
-// COMPONENTE: Lista de Categorias
+// COMPONENTE: Lista de Categorias (Simplificada)
 // ============================================================================
 interface ListaProps {
   categorias: Categoria[];
@@ -42,11 +40,9 @@ function ListaCategorias({ categorias, onEditar, onExcluir }: ListaProps) {
       <table className="w-full">
         <thead className="bg-slate-100 dark:bg-slate-900">
           <tr>
-            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Cor</th>
-            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Nome</th>
-            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Descrição</th>
-            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Destaque</th>
-            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Ações</th>
+            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400 w-20">ID</th>
+            <th className="text-left p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400">Nome da Categoria</th>
+            <th className="text-right p-4 text-sm font-semibold uppercase text-slate-600 dark:text-slate-400 w-32">Ações</th>
           </tr>
         </thead>
 
@@ -56,28 +52,23 @@ function ListaCategorias({ categorias, onEditar, onExcluir }: ListaProps) {
               key={categoria.id}
               className="hover:bg-slate-50 dark:hover:bg-slate-900/40 transition-colors"
             >
-              <td className="p-4">
-                <div
-                  className="w-8 h-8 rounded-full border border-slate-300 dark:border-slate-700 shadow-sm"
-                  style={{ backgroundColor: categoria.cor }}
-                />
+              <td className="p-4 text-sm text-slate-500 font-mono">
+                #{categoria.id}
               </td>
-              <td className="p-4 font-medium text-slate-900 dark:text-slate-100">{categoria.nome}</td>
-              <td className="p-4 text-slate-600 dark:text-slate-400 max-w-xs truncate">
-                {categoria.descricao || "-"}
-              </td>
+              
               <td className="p-4">
-                <span className={`
-                  px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider
-                  ${categoria.destaque 
-                    ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-800" 
-                    : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-400 border border-gray-200 dark:border-gray-700"}
-                `}>
-                  {categoria.destaque ? "Sim" : "Não"}
-                </span>
+                <div className="flex items-center gap-3">
+                   <div className="p-2 bg-violet-100 dark:bg-violet-900/30 rounded-lg text-violet-600 dark:text-violet-400">
+                      <TagIcon size={20} weight="fill" />
+                   </div>
+                   <span className="font-bold text-slate-900 dark:text-white text-base">
+                     {categoria.nome || "Sem Nome"}
+                   </span>
+                </div>
               </td>
+
               <td className="p-4">
-                <div className="flex gap-2">
+                <div className="flex gap-2 justify-end">
                   <button
                     onClick={() => onEditar(categoria)}
                     className="
@@ -114,55 +105,30 @@ function ListaCategorias({ categorias, onEditar, onExcluir }: ListaProps) {
 }
 
 // ============================================================================
-// COMPONENTE: Formulário de Categoria
+// COMPONENTE: Formulário de Categoria (Simplificado)
 // ============================================================================
 interface FormProps {
   categoria?: Categoria | null;
-  onSalvar: (dados: Omit<Categoria, 'id'>) => void;
+  onSalvar: (dados: { nome: string }) => void;
   onCancelar: () => void;
 }
 
 function FormularioCategoria({ categoria, onSalvar, onCancelar }: FormProps) {
-  const [formData, setFormData] = useState({
-    nome: "",
-    descricao: "",
-    cor: "#7C3AED",
-    destaque: false
-  });
+  const [nome, setNome] = useState("");
 
   useEffect(() => {
     if (categoria) {
-      setFormData({
-        nome: categoria.nome,
-        descricao: categoria.descricao || "",
-        cor: categoria.cor,
-        destaque: categoria.destaque || false
-      });
+      setNome(categoria.nome);
     } else {
-      setFormData({
-        nome: "",
-        descricao: "",
-        cor: "#7C3AED",
-        destaque: false
-      });
+      setNome("");
     }
   }, [categoria]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSalvar(formData);
+    if (!nome.trim()) return alert("O nome é obrigatório.");
+    onSalvar({ nome });
   };
-
-  const coresDisponiveis = [
-    "#7C3AED", // Violet
-    "#3B82F6", // Blue
-    "#10B981", // Green
-    "#F59E0B", // Yellow/Orange
-    "#EF4444", // Red
-    "#8B5CF6", // Purple
-    "#06B6D4", // Cyan
-    "#EC4899", // Pink
-  ];
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -174,8 +140,9 @@ function FormularioCategoria({ categoria, onSalvar, onCancelar }: FormProps) {
         <input
           type="text"
           required
-          value={formData.nome}
-          onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+          autoFocus
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
           className="
             w-full p-3 rounded-xl
             bg-slate-50 dark:bg-slate-900
@@ -185,86 +152,15 @@ function FormularioCategoria({ categoria, onSalvar, onCancelar }: FormProps) {
             placeholder:text-slate-400
             text-sm transition-all
           "
-          placeholder="Ex: Seguro de Vida, Automóvel..."
+          placeholder="Ex: Consultoria, Mentoria, Software..."
         />
-      </div>
-
-      {/* Descrição */}
-      <div>
-        <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-          Descrição
-        </label>
-        <textarea
-          value={formData.descricao}
-          onChange={(e) => setFormData({ ...formData, descricao: e.target.value })}
-          className="
-            w-full p-3 rounded-xl
-            bg-slate-50 dark:bg-slate-900
-            text-slate-900 dark:text-white
-            border border-slate-200 dark:border-slate-700
-            focus:outline-none focus:ring-2 focus:ring-violet-500
-            placeholder:text-slate-400
-            text-sm min-h-25 transition-all
-          "
-          placeholder="Breve descrição da categoria..."
-          rows={3}
-        />
-      </div>
-
-      {/* Cor */}
-      <div>
-        <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">
-          Cor de Identificação
-        </label>
-        
-        <div className="flex items-center gap-4 mb-3">
-          <div
-            className="w-12 h-12 rounded-xl border-2 border-slate-200 dark:border-slate-700 shadow-sm"
-            style={{ backgroundColor: formData.cor }}
-          />
-          <input
-            type="color"
-            value={formData.cor}
-            onChange={(e) => setFormData({ ...formData, cor: e.target.value })}
-            className="h-10 w-20 cursor-pointer bg-transparent"
-          />
-        </div>
-
-        <div className="flex flex-wrap gap-3">
-          {coresDisponiveis.map((cor) => (
-            <button
-              key={cor}
-              type="button"
-              onClick={() => setFormData({ ...formData, cor })}
-              className={`
-                w-8 h-8 rounded-full border-2 transition-all hover:scale-110
-                ${formData.cor === cor ? "border-slate-900 dark:border-white scale-110 shadow-md" : "border-transparent"}
-              `}
-              style={{ backgroundColor: cor }}
-              title={cor}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Destaque */}
-      <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
-        <label className="flex items-center gap-3 cursor-pointer">
-          <input
-            type="checkbox"
-            checked={formData.destaque}
-            onChange={(e) => setFormData({ ...formData, destaque: e.target.checked })}
-            className="w-5 h-5 text-violet-600 rounded focus:ring-violet-500 accent-violet-600"
-          />
-          <span className="text-sm font-bold text-slate-700 dark:text-slate-200">Marcar como destaque</span>
-        </label>
-        <p className="text-xs text-slate-500 mt-1 pl-8">
-          Categorias em destaque aparecem primeiro no catálogo.
+        <p className="text-xs text-slate-400 mt-2">
+          Este nome será exibido nos filtros e nos cards dos produtos.
         </p>
       </div>
 
       {/* Ações */}
-      <div className="flex gap-3 pt-2">
+      <div className="flex gap-3 pt-4 border-t border-slate-100 dark:border-slate-700">
         <button
           type="button"
           onClick={onCancelar}
@@ -307,11 +203,12 @@ export default function Categorias() {
     setLoading(true);
     try {
       const header = { headers: { Authorization: usuario.token } };
-      const resposta = await api.get("/categoria", header);
+      // Ajuste se sua rota for /temas ou /categorias no backend
+      const resposta = await api.get("/categoria", header); 
       setCategorias(resposta.data);
     } catch (error) {
       console.error("Erro ao carregar categorias:", error);
-      alert("Erro ao buscar categorias.");
+      // alert("Erro ao buscar categorias."); // Comentado para não spammar se a tela abrir sem dados
     } finally {
       setLoading(false);
     }
@@ -322,17 +219,19 @@ export default function Categorias() {
   }, [usuario.token]);
 
   // --- 2. SALVAR (POST / PUT) ---
-  const handleSalvar = async (dados: Omit<Categoria, 'id'>) => {
+  const handleSalvar = async (dados: { nome: string }) => {
     try {
       const header = { headers: { Authorization: usuario.token } };
+      
+      const payload = { nome: dados.nome };
 
       if (editando) {
         // Atualizar
-        await api.put('/categoria', { id: editando.id, ...dados }, header);
+        await api.put('/categoria', { id: editando.id, ...payload }, header);
         alert("Categoria atualizada com sucesso!");
       } else {
         // Criar
-        await api.post('/categoria', dados, header);
+        await api.post('/categoria', payload, header);
         alert("Categoria criada com sucesso!");
       }
 
@@ -357,7 +256,7 @@ export default function Categorias() {
     } catch (error: any) {
       console.error(error);
       if (error.response?.status === 500) {
-        alert("Não é possível excluir uma categoria que possui produtos.");
+        alert("Não é possível excluir uma categoria que possui produtos vinculados.");
       } else {
         alert("Erro ao excluir categoria.");
       }

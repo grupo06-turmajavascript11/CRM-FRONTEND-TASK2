@@ -60,7 +60,7 @@ const next = () => {
 
         <span className="relative inline-block mb-6">
           <span className="relative text-light">
-            Atlas 6
+            Atlas6
           </span>
           <span className="absolute left-0 -bottom-2 w-full h-1 bg-primary rounded-full" />
         </span>
@@ -83,7 +83,7 @@ const next = () => {
     <p className="text-center text-base sm:text-lg text-muted font-medium max-w-5xl mx-auto">
         A passagem do 3I/ATLAS pelo Sistema Solar interno simbolizou um momento raro.
         <br />
-        O Atlas 6 nasceu exatamente nesse espírito: uma oportunidade única para apoiar 
+        O Atlas6 nasceu exatamente nesse espírito: uma oportunidade única para apoiar 
         <br />
         decisões estratégicas e conduzir negócios a um crescimento estruturado e duradouro.
     </p>
@@ -237,7 +237,7 @@ const next = () => {
 
       {/* Título */}
       <h2 className="text-2xl sm:text-3xl font-heading font-semibold mb-10 text-center tracking-tight">
-        Atlas 6 <span className="opacity-70">em números</span>
+        Atlas6 <span className="opacity-70">em números</span>
       </h2>
 
       {/* Métricas */}
@@ -302,7 +302,7 @@ const next = () => {
         O que dizem <span className="text-primary">sobre nós</span>
       </h2>
       <p className="text-secondary text-lg">
-        Feedback real de quem já transformou sua gestão com o Atlas 6.
+        Feedback real de quem já transformou sua gestão com o Atlas6.
       </p>
     </div>
 

@@ -52,6 +52,12 @@ const features = [
     description:
       "Automatize processos e veja seus resultados decolarem em tempo recorde.",
   },
+{
+  icon: ChatCircleTextIcon,
+  title: "Relacionamento em Órbita",
+  description:
+    "Acompanhe cada conversa e histórico do cliente em um só lugar — responda mais rápido, com contexto e consistência.",
+},
   {
     icon: GlobeHemisphereWestIcon,
     title: "Expansão Universal",
@@ -642,10 +648,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PARTNERS */}
-      <section className="py-12 sm:py-16 lg:py-20 border-y border-muted/20 bg-light">
+{/* PARTNERS */}
+      <section className="py-12 sm:py-16 lg:py-20 border-y border-muted/20 bg-light/70">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-          <p className="text-center text-secondary mb-8 sm:mb-12 font-medium text-base sm:text-lg lg:text-xl px-2 sm:px-0">
+          <p className="text-center text-dark mb-8 sm:mb-12 font-bold text-base sm:text-lg lg:text-xl px-2 sm:px-0">
             Entre nossos clientes estão empresas da Fortune Global 500.
           </p>
 
@@ -715,7 +721,7 @@ export default function Home() {
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="group relative p-5 sm:p-6 lg:p-7 rounded-2xl bg-white border border-muted/20 hover:border-primary/50 transition-all duration-300 shadow-sm"
+                  className="group relative p-5 sm:p-6 lg:p-7 rounded-2xl bg-light/70 border border-muted/20 hover:border-primary/50 transition-all duration-300 shadow-sm"
                 >
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-300 bg-linear-to-br from-primary/5 to-primary-hover/5" />
 
@@ -726,11 +732,11 @@ export default function Home() {
                       </motion.span>
                     </div>
 
-                    <h3 className="font-heading text-lg sm:text-xl font-semibold mb-2">
+                    <h3 className="font-heading text-lg sm:text-xl font-semibold text-dark mb-2">
                       {feature.title}
                     </h3>
 
-                    <p className="text-secondary text-sm sm:text-base">
+                    <p className="text-dark text-sm sm:text-base">
                       {feature.description}
                     </p>
                   </div>

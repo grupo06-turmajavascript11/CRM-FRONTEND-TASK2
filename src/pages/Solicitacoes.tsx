@@ -53,7 +53,7 @@ export default function MinhasSolicitacoes() {
           </h1>
           
           <Link 
-            to="/catalogo" 
+            to="/cliente/catalogo" 
             className="bg-violet-600 hover:bg-violet-700 text-white px-6 py-2 rounded-lg font-bold transition-colors shadow-lg hover:shadow-violet-500/30 flex items-center gap-2"
           >
              + Nova Solicitação

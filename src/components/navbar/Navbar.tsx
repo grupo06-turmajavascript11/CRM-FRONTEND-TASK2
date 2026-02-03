@@ -86,7 +86,7 @@ function Navbar() {
               <img src={Logo} alt="Logo" className="p-1" />
             </div>
             <span className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-violet-600 transition-colors">
-              CRM Atlas 6
+              CRM Atlas6
             </span>
           </Link>
           

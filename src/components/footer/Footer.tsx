@@ -28,7 +28,7 @@ function Footer() {
                 <img src={Logo} alt="Logo" className="p-1" />
               </div>
               <span className="text-2xl font-bold text-gray-800 dark:text-gray-100">
-                CRM Atlas 6
+                CRM Atlas6
               </span>
             </div>
 
@@ -124,7 +124,7 @@ function Footer() {
           text-gray-600 dark:text-gray-300
         ">
           <p className="text-sm">
-            © 2026 CRM Atlas 6 - Generation Brasil. Todos os direitos reservados.
+            © 2026 CRM Atlas6 - Generation Brasil. Todos os direitos reservados.
           </p>
 
           <div className="flex items-center gap-2 mt-4 md:mt-0 text-sm">
